@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { CacheComponent } from './cache/cache.component'
+const routes: Routes = [
+  {
+    path: 'cache',
+    component:CacheComponent
+  }
+];
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'enabled'
+  })],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

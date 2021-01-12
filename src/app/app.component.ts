@@ -1,4 +1,5 @@
 import { Component, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ export class AppComponent {
 
   constructor(
     private viewContainerRef: ViewContainerRef,
-    private cfr: ComponentFactoryResolver
+    private cfr: ComponentFactoryResolver,
+    private router: Router
   ){
 
   }
@@ -30,6 +32,11 @@ export class AppComponent {
     this.viewContainerRef.createComponent(
       this.cfr.resolveComponentFactory(Lazy2Component)
     );
+  }
+
+  navigate() {
+
+    this.router.navigateByUrl('cache')
   }
 
 }
