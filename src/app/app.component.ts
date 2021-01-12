@@ -6,7 +6,7 @@ import { Component, ViewContainerRef, ComponentFactoryResolver } from '@angular/
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'lazy-demo-cache';
+  title = 'lazy-demo-test';
 
   constructor(
     private viewContainerRef: ViewContainerRef,
