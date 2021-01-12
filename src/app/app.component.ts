@@ -39,4 +39,8 @@ export class AppComponent {
     this.router.navigateByUrl('cache')
   }
 
+  lazy() {
+    this.router.navigateByUrl('check')
+  }
+
 }

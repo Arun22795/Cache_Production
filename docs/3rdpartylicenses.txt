@@ -206,6 +206,18 @@ Apache License
 MIT
 MIT
 
+@angular/common@6.1.10
+MIT
+MIT
+
+@angular/router@6.1.10
+MIT
+MIT
+
+@angular/platform-browser@6.1.10
+MIT
+MIT
+
 tslib@1.14.1
 0BSD
 Copyright (c) Microsoft Corporation.
