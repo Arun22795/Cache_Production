@@ -1,0 +1,75 @@
+  <div class="row">
+    <div class="col-12"><p class="font-blk"> Enterprises Onboarded </p></div>
+    <div class="col-4 p-0">
+      <div class="topnav">  
+      <div class="search-container mar-top-10">
+          
+          <input type="text" placeholder="Search" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          
+      </div>
+      </div>
+    </div>              
+    <div class="col-6 p-0 mar-top-18 text-center row ">
+      <div class="col-2 p-0 mar-0">
+        <label>Accounts</label> 
+      </div>         
+        <div class="col-9-5 p-0 mar-0 plan-type ">
+            <label class="label-border">
+              <input type="radio" class="mr-10" name="editList" value="Trial">Trial
+          </label>
+          <label class="label-border">
+              <input type="radio" class="mr-10" name="editList" value="Professional">Professional
+          </label>
+          <label class="label-border">
+              <input type="radio" class="mr-10" name="editList" value="Basic">Basic
+          </label>
+          <label class="label-border">
+            <input type="radio" class="mr-10" name="editList" value="Custom">Custom
+        </label>
+        <label class="label-border">
+          <input type="radio" class="mr-10" name="editList" value="Buisness">Buisness
+      </label>
+        </div>
+    </div>
+    <div class="col-2 mar-top-18 "><button class="btn btn-pri mar-top-10" (click)="createEnterprise()"> Create New Enterprise </button></div>           
+ 
+  </div>
+  <hr class="hr-style"> 
+  <div class="row">              
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="row">                   
+          <div 
+            class="col-3 card-block showdiv" 
+            *ngFor="let enterprise of enterprises | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems: totalCount }">                          
+            <button 
+              class="btn btn-grn" 
+              [ngClass]="{'btn-red': enterprise.buttonName === 'Deactive'}">{{enterprise.status}}
+            </button>
+            <p class="title">{{enterprise.enterpriseName}}</p>
+            <hr class="hr-style">
+            <p><img src="assets/image/user.png">{{enterprise.contactPerson}} - {{enterprise.billing}}</p>
+            <hr class="hr-style">
+            <p><img src="assets/image/rocket.png">{{enterprise.createdOn | date:'MMM d, y, h:mm:ss a'}}</p>
+            <p><img src="assets/image/wrong.png">{{enterprise.updatedOn | date:'MMM d, y, h:mm:ss a'}}</p>
+            <div class="view-details overlay" (click)="viewEnterprise(enterprise.enterpriseId)"> 
+              <button class="btn btn-pri text">View Details</button> 
+            </div>
+          </div>                                                     
+      </div>                               
+    </div>              
+  </div> 
+  <div class="row">
+    <div class="col-md-6 text-left">
+        <select (change)="onChangeRow($event)">
+            <option value=6>6</option>
+            <option value=12>12</option>
+            <option value=18>18</option>
+            <option value=24>24</option>
+        </select>
+    </div>
+    <div class="col-md-6 text-right">
+        <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+</div>             
+<!-- </form> -->

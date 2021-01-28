@@ -1,46 +1,53 @@
-import { Component, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { UtilityService } from '@services/utility.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'lazy-demo-test';
+export class AppComponent implements OnInit, OnDestroy {
+  title = 'twixor-aggregator';
+
 
   constructor(
-    private viewContainerRef: ViewContainerRef,
-    private cfr: ComponentFactoryResolver,
-    private router: Router
-  ){
+    private router: Router,
+    private utilityService: UtilityService
+  ) { }
+
+  ngOnInit() {
+
+    window.addEventListener('storage', (event) => {
+      if (event.storageArea == localStorage) {
+        let token = localStorage.getItem('token');
+        if (token == undefined) {
+          this.router.navigate(['/login']);
+        }
+      }
+    });
+
+    window.addEventListener('unload', (event) => {
+      if (environment.production) {
+        this.utilityService.logOut();
+      }
+    })
+
+    window.addEventListener('beforeunload', (event) => {
+      if (environment.production) {
+        // this.utilityService.logOut();
+        if (!window.location.href.includes('/login')) {
+          event.preventDefault()
+          event.returnValue = "";
+          return false;
+        }
+        
+      }
+    });
 
   }
 
-
-  async getLazy1() {
-    this.viewContainerRef.clear();
-    const {Lazy1Component} = await import('./lazy1/lazy1.component');
-    this.viewContainerRef.createComponent(
-      this.cfr.resolveComponentFactory(Lazy1Component)
-    );
-  }
-
-  async getLazy2() {
-    this.viewContainerRef.clear();
-    const { Lazy2Component } = await import('./lazy2/lazy2.component');
-    this.viewContainerRef.createComponent(
-      this.cfr.resolveComponentFactory(Lazy2Component)
-    );
-  }
-
-  navigate() {
-
-    this.router.navigateByUrl('cache')
-  }
-
-  lazy() {
-    this.router.navigateByUrl('check')
-  }
+  ngOnDestroy(){}
 
 }

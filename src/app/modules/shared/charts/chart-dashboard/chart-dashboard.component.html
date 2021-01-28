@@ -1,0 +1,13 @@
+<div style="display: block; height: auto; width: 100%;">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <input type="radio" name="chartType" (click)="onBar()" /><label>Bar chart</label>&nbsp;
+            <input type="radio" name="chartType" checked (click)="onLine()" /><label>Line chart</label>
+        </div>
+    </div>
+</div>

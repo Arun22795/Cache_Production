@@ -1,0 +1,68 @@
+<form>
+    <!-- <hr class="hr-style"> -->
+    <div class="row">
+        <div class="col-12">
+            <p class="font-blk"> All Tickets </p>
+        </div>
+
+        <div class="col-12 text-center  plan-type ">
+            <div class="tab-head">
+                <label>
+                    Total Tickets - #12
+                </label>
+            </div>
+            <div class="tab-head">
+                <label>
+                    No of Resolved Tickets - #7
+                </label>
+            </div>
+            <div class="tab-head">
+                <label>
+                    No of Tickets - #5
+                </label>
+            </div>
+            <div class="tab-head">
+                <label>
+
+                </label>
+            </div>
+            <div class="tab-head-blk">
+                <button class="btn btn-black"> Manage Tickets </button>
+            </div>
+        </div>
+
+
+    </div>
+    <hr class="hr-style">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-3 card-block showdiv" 
+                    *ngFor="let ticket of allTickets | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+                    <button class="btn btn-black mar-top-10">Tickets - {{ticket?.ticketId}}</button>
+                    <hr class="hr-style">
+                    <p class="font-wht">{{ticket?.priority}}</p>
+                    <hr class="hr-style">
+                    <p><img src="assets/image/calender.png">{{ticket?.calender}}</p>
+                    <p><img src="assets/image/user.png">{{ticket?.name}}</p>
+                    <div class="overlay view-details">
+                        <button class="btn btn-pri text ">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-left">
+            <select (change)="onChangeRow($event)">
+                <option value=6>6</option>
+                <option value=12>12</option>
+                <option value=18>18</option>
+                <option value=24>24</option>
+            </select>
+        </div>
+        <div class="col-md-6 text-right">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+</form>

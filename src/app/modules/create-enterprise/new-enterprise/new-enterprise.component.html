@@ -1,0 +1,253 @@
+<form [formGroup]="enterpriseForm">
+  <div class="row">
+    <div class="msg-content col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="row hgt-20">
+        <div class="col-8">
+          <p class="font-blk">
+            {{ (showType == 'view')?'View Enterprise Information':'Enterprise Information'}}
+          </p>
+        </div>
+        <div class="col-4 text-right">
+          <button class="btn btn-sec" *ngIf="showType == 'update'" (click)="onUpdateEnterprise()">
+            Update
+          </button>&nbsp;
+          <button class="btn btn-sec" *ngIf="showType == 'view'" (click)="onEditEnterprise()">
+            Edit
+          </button>&nbsp;
+          <button class="btn btn-nrm" (click)="onCancel()">
+            Cancel
+          </button>&nbsp;
+          <button class="btn btn-sec" *ngIf="showType == 'add'" (click)="onCreateEnterprise()">
+            Save
+          </button>
+        </div>
+      </div>
+
+      <hr class="hr-style">
+
+      <div class="row">
+        <div class="col-6">
+          <label for="email" class="col-12 col-form-label">{{labels?.companyName}}</label>
+          <app-custom-input [id]="'companyName'" [placeHolder]="'Company Name'"
+            [maxLength]="validations?.validationData.companyName.maxLength" formControlName="companyName"
+            [isRequired]="'Company Name is Mandatory'" [isDirty]="isDirty" [isDisabledInp]="isDisable">
+          </app-custom-input>
+        </div>
+
+        <div class="col-6">
+          <label for="email" class="col-12 col-form-label">{{labels?.industry}}</label>
+          <app-custom-input [id]="'industry'" [placeHolder]="'Industry'" formControlName="industry"
+            [maxLength]="validations?.validationData.industry.maxLength" [isRequired]="'Industry is Mandatory'"
+            [isDirty]="isDirty" [isDisabledInp]="isDisable">
+          </app-custom-input>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-2" [ngClass]="{'logo-disable': isDisable}">
+          <label class="col-12 col-form-label">Logo</label>
+
+          <!-- <iframe [src]= "url | secure | async"></iframe> -->
+          <!-- <img class="logo-con" id="image" [src]= "url | secure | async"> -->
+          <img class="logo-con" [src]="localUrl | secure | async">
+          <span class="edit-icon" (click)="fileInput.click()">
+            <img src="assets/image/edit.png" class="edit-img">
+          </span>
+
+          <input #fileInput type="file" id="img" accept="image/png" style="display: none;"
+            (input)="onFileSelect($event)" />
+        </div>
+        <div class="col-10">
+          <label class="col-12 col-form-label">{{labels?.about}}</label>
+          <textarea rows="4" class="form-control input-sty" [ngClass]="{'inp-disable': isDisable}" name="industry_name"
+            type="text" placeholder="Industry Name" maxlength="250" formControlName="about" placeholder="about">
+          </textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="msg-content col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+      <div class="row hgt-20">
+        <div class="col-8">
+          <p class="font-blk"> Contact Details</p>
+        </div>
+        <div class="col-4 text-right" *ngIf="showType != 'add'">
+          <img src="assets/image/edit.png" class="">
+        </div>
+      </div>
+      <hr class="hr-style">
+      <label for="email" class="col-12 col-form-label">{{labels?.contactPerson}}</label>
+      <app-custom-input [id]="'contactPerson'" [placeHolder]="'Contact Person Name'"
+        [maxLength]="validations?.validationData.contactPerson.maxLength" 
+        formControlName="contactPerson"
+        [patternCheck]="validations?.validationData.name.patternCheck"
+        [isRequired]="'Contant Person is Mandatory'" [isDirty]="isDirty" [isDisabledInp]="isDisable">
+      </app-custom-input>
+      <label for="email" class="col-12 col-form-label">{{labels?.jobTitle}}</label>
+      <app-custom-input [maxLength]="validations?.validationData.jobTitle.maxLength" [id]="'jobTitle'"
+        [placeHolder]="'Job Title'" formControlName="jobTitle" [isRequired]="'Job Title is Mandatory'"
+        [isDirty]="isDirty" [type]="validations?.validationData.jobTitle.type" [isDisabledInp]="isDisable">
+      </app-custom-input>
+
+      <label class="col-12 col-form-label">Business Phone</label>
+      <input class="form-control input-sty" name="buissness_phone" formControlName="businessPhone" required type="text"
+        [ngClass]="{'inp-disable': isDisable}" placeholder="Business Phone"
+        (intlTelInputObject)="telInputObject($event)" maxlength="10" [ng2TelInputOptions]="{initialCountry: setCountryFlag}"
+        (ng2TelOutput)="getNumber($event)" (countryChange)="onCountryChange($event)" ng2TelInput />
+        <div class="business-phone-error" *ngIf="
+        isDirty &&
+        enterpriseForm.get('businessPhone').errors?.required
+      ">
+        Please select business phone
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="msg-content col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="row hgt-20">
+        <div class="col-8">
+          <p class="font-blk"> Billing Address</p>
+        </div>
+        <div class="col-4 text-right" *ngIf="showType != 'add'">
+          <img src="assets/image/edit.png" class="">
+        </div>
+      </div>
+
+      <hr class="hr-style">
+      <label for="email" class="col-12 col-form-label">{{labels?.panNumber}}</label>
+      <app-custom-input [id]="'panNumber'" [placeHolder]="'PAN Number'" formControlName="panNumber"
+        [patternCheck]="validations?.validationData.panNumber.patternCheck" [inputClass]="'text-uppercase'" [type]="validations?.validationData.panNumber.type" [maxLength]="validations?.validationData.panNumber.maxLength" [isRequired]="'PAN Number is Mandatory'"
+        [isDirty]="isDirty" [isDisabledInp]="isDisable">
+      </app-custom-input>
+      <label for="email" class="col-12 col-form-label">{{labels?.tanNumber}}</label>
+      <app-custom-input [id]="'tanNumber'" [placeHolder]="'TAN Number'" formControlName="tanNumber"
+        [patternCheck]="validations?.validationData.tanNumber.patternCheck" [maxLength]="validations?.validationData.tanNumber.maxLength" [isRequired]="'TAN Number is Mandatory'"
+        [isDirty]="isDirty" [isDisabledInp]="isDisable">
+      </app-custom-input>
+      <label for="email" class="col-12 col-form-label">{{labels?.gstNumber}}</label>
+      <app-custom-input [patternCheck]="validations?.validationData.gstNumber.patternCheck" [id]="'gstNumber'"
+        [placeHolder]="'GST Number'" formControlName="gstNumber" [inputClass]="'text-uppercase'" [isRequired]="'GST Number is Mandatory'" [type]="validations?.validationData.gstNumber.type" [maxLength]="validations?.validationData.gstNumber.maxLength"
+        [isDirty]="isDirty" [isDisabledInp]="isDisable"></app-custom-input>
+    </div>
+
+    <div class="msg-content col-lg-5 col-md-5 col-sm-12 col-xs-12">
+
+      <div class="row hgt-20">
+        <div class="col-8">
+          <p class="font-blk"> Accounts Details</p>
+        </div>
+        <div class="col-4 text-right" *ngIf="showType != 'add'">
+          <img src="assets/image/edit.png" class="">
+        </div>
+      </div>
+
+      <hr class="hr-style">
+      <label for="email" class="col-12 col-form-label">{{labels?.accountNumber}}</label>
+      <app-custom-input 
+      [id]="'accountNumber'" 
+      [patternCheck]="validations?.validationData.accountNumber.patternCheck"
+      formControlName="accountNumber" 
+      [maxLength]="validations?.validationData.cardNumber.maxLength" 
+      [placeHolder]="'Account Number'"
+      [custom]="getAccountNumberValidation"
+      [isRequired]="'Account Number is Mandatory'" 
+      [isDirty]="isDirty" 
+      [isDisabledInp]="isDisable">
+      </app-custom-input>
+      <label for="email" class="col-12 col-form-label">{{labels?.cardNumber}}</label>
+      <app-custom-input 
+      [id]="'cardNumber'" 
+      [patternCheck]="validations?.validationData.cardNumber.patternCheck"
+      formControlName="cardNumber" 
+      [placeHolder]="'Card Number'" 
+      [maxLength]="validations?.validationData.cardNumber.maxLength" 
+      [custom]="getCreditCardNumberValidation"
+      [isRequired]="'Card Number is Mandatory'"
+      [isDirty]="isDirty" 
+      [isDisabledInp]="isDisable">
+      </app-custom-input>
+      <label for="email" class="col-12 col-form-label">{{labels?.IFSC_code}}</label>
+      <app-custom-input 
+      [id]="'ifscCode'" 
+      [patternCheck]="validations?.validationData.IFSC_code.patternCheck"
+      formControlName="ifscCode" 
+      [placeHolder]="'IFSC Code'" 
+      [inputClass]="'text-uppercase'" 
+      [isRequired]="'IFSC Code is Mandatory'"
+      [maxLength]="validations?.validationData.IFSC_code.maxLength"
+      [isDirty]="isDirty" 
+      [isDisabledInp]="isDisable">
+      </app-custom-input>
+
+    </div>
+  </div>
+
+
+  <!-- <div class="modal fade" id="myModal_crop" *ngIf="showCropModal" [ngClass]="{'dis-block': showCropModal}" role="dialog" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-centered modal-top" style="max-width:900px;">
+  
+      <div class="modal-header pl-0">
+        <div class="col-md-3 p-0">
+         <span class="float-left">Edit Image</span>
+        </div>
+     </div>
+     
+        <div class="modal-content mx-auto p-3">
+          
+            <div class="card mt-3 mb-3 border-0">
+  
+              <img  id="image" [src]= "url | secure | async" width="500px" height="500px">
+               
+                <div class="modal-footer mt-3">
+                    <button type="button" class="btn btn-secondary border-primary bg-white text-primary" data-dismiss="modal" (click)="showCropModal = false;">Cancel</button>
+                    <button type="button" class="btn btn-Primary bg-primary text-white text-white" data-dismiss="modal" (click)="showCropModal = false;">Update</button>
+                 </div>
+            </div>
+        </div>
+  
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+  <div class="modal fade" id="myModal_crop" *ngIf="showCropModal" [ngClass]="{'dis-block': showCropModal}" tabindex="-1"
+    role="dialog" aria-labelledby="invoicesModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog vertical-alignment-helper" role="document">
+      <div class="vertical-align-center">
+        <div class="modal-content  ">
+          <div class="modal-header">
+            <h6 class="font-bold">Edit Logo Image</h6>
+            <button type="button" class="close" data-dismiss="modal" (click)="clearCrop()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body row">
+            <img id="image" [src]="url | secure | async" width="500px" height="500px">
+          </div>
+
+          <div class="modal-footer">
+            <div class="col-12">
+              <div class="col-12 text-right">
+                <button type="button" class="btn btn-wht mar-rgt" (click)="clearCrop()">Cancel</button>
+                <button type="button" class="btn btn-pri" (click)="uploadCropImage()">Update</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

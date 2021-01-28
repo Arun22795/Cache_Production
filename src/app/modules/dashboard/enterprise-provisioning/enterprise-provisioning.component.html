@@ -1,0 +1,272 @@
+<!-- <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-3 mt-4 mb-4">
+                <div class="row">
+                    <div class="col-md-6 font_20 font_weigh_600">
+                        Enterprise Provisioning
+                    </div>
+                </div>
+
+                <hr class="mb-0">
+                <form [formGroup]="enterpriseProvisionForm">
+                    <div class="row">
+                        <div class="col-md-4">
+                           
+
+                            <div class="form-group">
+                                <app-custom-input formControlName="enterpriseName" [id]="'enterpriseName'"
+                                    [labelName]="labels?.enterpriseName" [placeHolder]="'Enterprise Name'"
+                                    [maxLength]="validations?.validationData.name.maxLength"
+                                    [patternCheck]="validations?.validationData.name.patternCheck"
+                                    [isRequired]="'Please enter enterprise name'" [isDirty]="isDirty">
+                                </app-custom-input>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+                           
+                            <div class="form-group">
+                                <app-custom-input formControlName="businessOwnerEmail" [id]="'businessOwnerEmail'"
+                                    [labelName]="labels?.businessOwnerEmail" [placeHolder]="'Business Owner Email'"
+                                    [maxLength]="validations?.validationData.name.maxLength"
+                                    [patternCheck]="validations?.validationData.name.patternCheck"
+                                    [isRequired]="'Please enter business owner email'" [isDirty]="isDirty">
+                                </app-custom-input>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 form-group mb-0 analytics mt-2">
+                            <label for="idate" class="grey_text">Plan</label>
+                           
+    
+                                <ng-select [items]="planData" 
+                                bindLabel="name" 
+                                bindValue="id" 
+                                placeholder="Select Plan"
+                                formControlName="plan"
+                                >
+                        </ng-select>
+    
+                        </div>
+
+                        <div class="col-md-4 form-group mb-0 analytics mt-2">
+                            <label for="idate" class="grey_text">Account Status</label>
+                           
+    
+                                <ng-select [items]="accountStatusData" 
+                                bindLabel="name" 
+                                bindValue="id" 
+                                placeholder="Select Account Status"
+                                formControlName="accountStatus"
+                                >
+                        </ng-select>
+    
+                        </div>
+
+                        <div class="col-md-4 form-group mb-0 analytics mt-2">
+                            <label for="idate" class="grey_text">Billing Type</label>
+                           
+    
+                                <ng-select [items]="billingTypeData" 
+                                bindLabel="name" 
+                                bindValue="id" 
+                                placeholder="Select Billing Type"
+                                formControlName="billingType"
+                                >
+                        </ng-select>
+    
+                        </div>
+
+                        <div class="col-md-4 form-group mb-0 analytics mt-2">
+                            <label for="idate" class="grey_text">Payment Type</label>
+                           
+    
+                                <ng-select [items]="paymentTypeData" 
+                                bindLabel="name" 
+                                bindValue="id" 
+                                placeholder="Select Payment Type"
+                                formControlName="paymentType"
+                                >
+                        </ng-select>
+    
+                        </div>
+
+                        <div class="col-md-4">
+                           
+
+                            <div class="form-group">
+                                <app-custom-input formControlName="journey" [id]="'journey'"
+                                    [labelName]="labels?.journey" [placeHolder]="'Journey'"
+                                    [maxLength]="validations?.validationData.name.maxLength"
+                                    [patternCheck]="validations?.validationData.name.patternCheck"
+                                    [isRequired]="'Please enter journey'" [isDirty]="isDirty">
+                                </app-custom-input>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+                           
+
+                            <div class="form-group">
+                                <app-custom-input formControlName="campaign" [id]="'campaign'"
+                                    [labelName]="labels?.campaign" [placeHolder]="'Campaign'"
+                                    [maxLength]="validations?.validationData.name.maxLength"
+                                    [patternCheck]="validations?.validationData.name.patternCheck"
+                                    [isRequired]="'Please enter campaign'" [isDirty]="isDirty">
+                                </app-custom-input>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                           
+
+                            <div class="form-group">
+                                <app-custom-input formControlName="encap" [id]="'encap'"
+                                    [labelName]="labels?.encap" [placeHolder]="'Encap'"
+                                    [maxLength]="validations?.validationData.name.maxLength"
+                                    [patternCheck]="validations?.validationData.name.patternCheck"
+                                    [isRequired]="'Please enter encap'" [isDirty]="isDirty">
+                                </app-custom-input>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                           
+
+                            <div class="form-group">
+                                <app-custom-input formControlName="agent" [id]="'agent'"
+                                    [labelName]="labels?.agent" [placeHolder]="'Agent'"
+                                    [maxLength]="validations?.validationData.name.maxLength"
+                                    [patternCheck]="validations?.validationData.name.patternCheck"
+                                    [isRequired]="'Please enter agent'" [isDirty]="isDirty">
+                                </app-custom-input>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-11 d-flex justify-content-end">
+                            <button class="btn text-dark bg-white" (click)="goToDashboard()">Cancel</button>
+                            <button class="btn  bg_waterblue text-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+<form>
+    <!-- <hr class="hr-style"> -->
+    <div class="row hgt-20">
+        <div class="col-8">
+            <p class="font-blk">
+                <img src="../../../../assets/image/left-arrow.png"> Enterprises Provisioning
+            </p>
+        </div>
+        <div class="col-4 text-right">
+            <button class="btn btn-sec"> Cancel </button>&nbsp;
+            <button class="btn btn-pri"> Save </button>
+        </div>
+    </div>
+    <hr class="hr-style">
+
+    <div class="row">
+        <div class="msg-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-4">
+                    <label>Enterprises Name</label>
+                    <input class="form-control input-sty" name="enterprises_name" type="text"
+                        placeholder="Enterprises Name" value="Testaccount8">
+                </div>
+                <div class="col-6">
+                    <label>Plan Type</label>
+                    <div class=" plan-type row">
+                        <label class="label-border">
+                            <input type="radio" class="mr-10" name="editList" value="Trial" />Trial
+                        </label>
+                        <label class="label-border">
+                            <input type="radio" class="mr-10" name="editList" value="Professional" />Professional
+                        </label>
+                        <label class="label-border">
+                            <input type="radio" class="mr-10" name="editList" value="Custom" />Custom
+                        </label>
+                        <label class="label-border">
+                            <input type="radio" class="mr-10" name="editList" value="Buisness" />Buisness
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <label>Content</label>
+                    <textarea rows="8" class="form-control input-sty" name="content" type="text" placeholder="Content"
+                        value="Banking Finance Services">
+                    </textarea>
+                    <div class="row mt-2 mb-2">
+                        <div class="col-6 ">
+                            <button class="btn btn-gry" type="button">+ Add More</button>
+                            <button class="btn btn-gry" type="button"> 
+                                <i class="fa fa-trash fa-trh m-0">&nbsp;Delete</i> 
+                            </button>
+                        </div>
+                        <div class="col-6 text-right"> 0 / 
+                            <img class="arrow-wid" src="../../../../assets/image/circle-left.png"> 
+                            <img class="arrow-wid" src="../../../../assets/image/circle-right.png">
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-5 side-block">
+                            <p class="big-num">5 / 10</p>
+                            <p>Journey</p>
+                        </div>
+                        <div class="col-5 side-block">
+                            <p class="big-num">8 / 10</p>
+                            <p>Campaing</p>
+                        </div>
+                        <div class="col-5 side-block">
+                            <p class="big-num">2 / 10</p>
+                            <p>Encaps</p>
+                        </div>
+                        <div class="col-5 side-block">
+                            <p class="big-num">6 / 10</p>
+                            <p>Agent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>Buisness Owner email-id</label>
+                    <input class="form-control input-sty" name="email_id" type="text" placeholder="E-mail id"
+                        value="abc@gmail.com">
+                </div>
+                <div class="col-4">
+                    <label>Payment</label>
+                    <input class="form-control input-sty" name="payment" type="text" placeholder="Payment"
+                        value="Postpaid">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label>Account Status</label>
+                    <input class="form-control input-sty" name="account_status" type="text" placeholder="Account Status"
+                        value="Active">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

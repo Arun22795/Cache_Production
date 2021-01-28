@@ -1,0 +1,90 @@
+<div class="shadow-none" id="sidebar-wrapper">
+    <div class="sidebar-heading grid-menu">
+        <div class="grid-one">
+            <img src="../../../../assets/image/logo-sample.png">
+        </div>
+       
+    </div>
+    <!-- <hr class="hr-style">
+  
+  <div class="" id="accordionExample">
+    <div class="">
+      <div class="" id="headingOne">
+        <h2 class="mb-0">
+          <button (click)="onOverView()" class="btn  accordion" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <img class="side-icon" src="../../../../assets/image/graph.png">Dashboard</button>
+        </h2>
+      </div>
+  
+      <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">                   
+           
+      </div>
+
+
+    </div> -->
+    <hr class="hr-style">
+
+    <div class="" id="accordionExample">
+        <div class="">
+            <div class="accordion-menu" id="headingOne">
+                <h2 class="collapse-inner rounded mb-0">
+                    <a class="collapse-item active"><button (click)="onOverView()" class="btn accordion active" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <img class="side-icon" src="../../../../assets/image/graph.png">Dashboard</button></a>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+            </div>
+        </div>
+        <div class="">
+            <div class="accordion-menu" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn  accordion" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <img class="side-icon" src="../../../../assets/image/suitcase.png">Enterprises <i class="fa fa-chevron-down pad-left"></i> 
+            </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <ul class="sub-ul">
+                    <li class="pointer" (click)="onEnterpriseOnboarded()">Onboarding</li>
+                    <li class="pointer" (click)="onTicketManagement()">Tickets</li>
+                    <li class="active pointer" (click)="onPaymentManagement()">Payments</li>
+                </ul>
+            </div>
+        </div>
+        <div class="accordion-menu">
+            <div class="" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn  collapsed accordion" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <img class="side-icon" src="../../../../assets/image/bell.png">Notification
+          </button>
+                </h2>
+            </div>
+            <!-- <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <ul class="sub-ul">
+            <li>Onboarding</li>
+            <li>Tickets</li>
+            <li>Payments</li>
+        </ul>
+      </div> -->
+        </div>
+        <div class="accordion-menu">
+            <div class="" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn  collapsed accordion " type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <img class="side-icon" src="../../../../assets/image/user.png">John Cooper<i class="fa fa-chevron-down pad-left"></i> <br>
+            <span class="admin-span btn btn-pri ">Admin</span></button>
+                </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <ul class="sub-ul">
+                    <li>Details</li>
+                    <li (click)="logOut()">Sign Out</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
